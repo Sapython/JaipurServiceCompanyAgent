@@ -1,0 +1,78 @@
+section.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px 30px;
+  p,
+  h1 {
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    line-height: normal;
+  }
+  img {
+    height: 56px;
+  }
+  h1 {
+    color: #000;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  p {
+    color: #342d50;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+section.login {
+  padding: 20px;
+  h3 {
+    text-align: center;
+  }
+  h6 {
+    color: #666;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  form {
+    margin-top: 10px;
+    .phoneInput {
+      display: flex;
+      gap: 15px;
+      border-radius: 8px;
+      border: 1px solid #bebebe;
+      background: #fff;
+      padding: 10px 15px;
+      input {
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+      ion-icon {
+        font-size: 20px;
+        color: #666666;
+      }
+    }
+    ion-button {
+      margin-top: 40px;
+      --border-radius: 10px;
+      width: 100%;
+      --padding-top: 15px;
+      --padding-bottom: 15px;
+      text-transform: none;
+    }
+  }
+}
+.footer-section{
+ display: flex;
+ justify-content: space-between;
+ -webkit-box-shadow: none;
+ box-shadow: none;
+}

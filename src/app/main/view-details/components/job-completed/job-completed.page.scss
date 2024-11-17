@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  font-family: lato;
+  box-sizing: border-box;
+}
+.button-container {
+  //position: absolute;
+  width: 100%;
+  bottom: 0%;
+
+  .buttons {
+    margin-left: 0px;
+    margin-right: 0px;
+    display: block;
+
+    .cancel {
+      width: 100%;
+      font-family: lato;
+      text-transform: none;
+      color: #181f29;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid var(--primary, #181f29);
+      background: var(--SECONDARY, #fff);
+      box-shadow: 0px 2px 6px 1px rgba(22, 22, 22, 0.18);
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-top: 10px;
+      padding: 6px;
+    }
+  }
+}
+
+.job-completed-container {
+  .invoice-download {
+    background-color: white;
+    margin-top: 6px;
+    padding: 5px 15px 10px 15px;
+
+    .invoice {
+      color: #181f29;
+      font-size: 14px;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+
+    .img {
+      border: 1px solid #181f29;
+      border-radius: 50%;
+      padding: 2px 5px 2px 5px;
+    }
+  }
+
+  .job-completed-rating {
+    .rating-inner {
+      border-radius: 4px;
+      opacity: 0.8;
+      background: #d9f2cf;
+      padding: 10px 10px 10px 25px;
+    }
+    .text {
+      color: #579540;
+      font-size: 12px;
+      font-weight: 400;
+      padding-left: 15px;
+      padding-top: 7px;
+    }
+    img {
+      color: #579540;
+    }
+  }
+}
+
+.rating-list {
+  li {
+    font-size: 20px;
+    float: right;
+    color: white;
+    &:hover {
+      color: #ffd700;
+      ~ {
+        li {
+          color: #ffd700;
+        }
+      }
+    }
+  }
+  li.selected {
+    color: #ffd700;
+  }
+  display: inline-block;
+  padding-left: 2px;
+  list-style: none;
+}
+
+.rating-main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-top: 1px solid #D7D7D7;
+  .rating-text{
+    color: #181F29;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .date{
+    color : rgba(0, 0, 0, 0.55);
+    font-size: 12px;
+  }
+}
+
+.payment-detail{
+  background-color: white;
+  margin-top: 6px;
+  .details{
+    font-size: 14px;
+  }
+  .status{
+    border-radius: 5px;
+    background: #DFF3D7;
+    height: 22.846px;
+    padding: 5px 15px;
+    color: #579540;
+    text-align: right;
+    font-size: 10px;
+  }
+  .mode{
+     color: #7E8083;
+     font-size: 12px;
+  }
+  .paytype{
+    font-size: 12px;
+    color: #252525;
+  }
+  .head{
+    display: flex;
+    align-items: center;
+    .label{
+      font-size: 14px;
+      font-weight: 600;
+      color: #181F29;
+    }
+  }
+}

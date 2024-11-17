@@ -1,0 +1,136 @@
+.text-image {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  //margin-bottom: 30px;
+  h1 {
+    color: var(--primary, #181f29);
+    text-align: center;
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  p {
+    color: #666;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  img {
+    width: 272px;
+  }
+}
+section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  ion-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    ion-accordion.accordion-expanding,
+    ion-accordion.accordion-expanded {
+      background: #f6f6f6;
+      border-radius: 7px 7px 15px 15px;
+      box-shadow: inset 0px 0px 10px #ccc;
+    }
+  }
+  .divider-text {
+    color: var(--primary, #181f29);
+    font-family: Lato;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    margin: 0;
+  }
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  ion-item {
+    ion-label {
+      --color: #666666;
+    }
+    ion-checkbox {
+      --size: 22px;
+      margin: 0;
+    }
+    &.bordered-ion-item::part(native) {
+      display: flex;
+      padding-inline-start: 15px;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid #bebebe;
+      background: #fff;
+      span {
+        color: #666;
+        font-family: Lato;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.buttons {
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 20px;
+  display: flex;
+  ion-button {
+    font-size: 20px;
+    width: 47% !important;
+  }
+  ion-button[fill="outline"] {
+    --padding-top: 13px;
+    --padding-bottom: 13px;
+  }
+  ion-button[fill="solid"] {
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+  }
+}
+.service {
+  height: 56px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #bebebe;
+}
+
+.button-container {
+  //position: absolute;
+  width: 100%;
+  bottom: 0%;
+
+  .buttons1 {
+    margin-left: 0px;
+    margin-right: 0px;
+    display: block;
+
+    .cancel {
+      width: 100%;
+      font-family: lato;
+      text-transform: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid var(--primary, #181f29);
+      //background: var(--SECONDARY, #fff);
+      box-shadow: 0px 2px 6px 1px rgba(22, 22, 22, 0.18);
+      margin-top: 10px 0px;
+      padding: 6px;
+      background-color: #181f29;
+    }
+  }
+}

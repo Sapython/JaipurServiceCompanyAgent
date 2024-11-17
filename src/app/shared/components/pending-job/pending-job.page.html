@@ -1,0 +1,105 @@
+<main class="pending-job" *ngIf="job.bookingData">
+  <section
+    class="job-details"
+    routerLink="/main/view-details/{{job.bookingData?.currentUser?.userId}}/{{job.bookingData?.id}}/{{job.bookingData?.stage}}"
+  >
+    <div class="details-img">
+      <img [src]="job.bookingData.mainCategory.icon" alt="" />
+    </div>
+    <ion-label class="details-text">
+      <p class="name">{{job.bookingData.subCategory.name}}</p>
+      <p class="id">#{{job.bookingData.id}}</p>
+    </ion-label>
+    <div class="metadata-end-wrapper details-price" slot="end">
+      <div class="price">
+        <p slot="end" class="total">
+          {{job.bookingData.billing.grandTotal | currency:'INR':'symbol' :
+          '1.0-0'}}
+        </p>
+        <p slot="end" class="discount">
+          -{{job.bookingData.billing.totalJobAcceptanceCharge |
+          currency:'INR':'symbol' : '1.0-0'}}
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="job-time job-details">
+    <div class="calender details-img">
+      <img src="/assets/icon/calender.svg" alt="" />
+    </div>
+    <ion-label class="details-text details-time">
+      <p class="time">
+        {{ job.bookingData.timeSlot?.time?.startTime?.toDate() | date:
+        "shortTime" }}-{{ job.bookingData.timeSlot?.time?.endTime?.toDate() |
+        date: "shortTime" }}
+      </p>
+      <p class="time date">
+        {{job.bookingData.timeSlot?.date?.toDate() | date:'dd MMM yyyy'}}
+      </p>
+    </ion-label>
+    <div class="d-flex map-details">
+      <div class="distance-img">
+        <img src="/assets/icon/Mask group.svg" alt="" />
+      </div>
+      <div class="metadata-end-wrapper" slot="end">
+        <div slot="end" class="distance">Distance</div>
+        <div slot="end" class="distance km">
+          {{distance | number: '1.0-2'}}Km
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="job-address job-details">
+    <div><img src="/assets/icon/profile.svg" alt="" /></div>
+    <ion-label class="person-details">
+      <p class="person-name">{{job.bookingData.currentUser.name}}</p>
+      <div class="add-name d-flex">
+        <div><img src="/assets/icon/map.svg" alt="" /></div>
+        <p>{{job.bookingData.address?.addressLine1}},
+           {{job.bookingData.address?.addressLine2}},
+           {{job.bookingData.address?.pincode}}
+          </p>
+      </div>
+    </ion-label>
+    <div class="metadata-end-wrapper view-details d-flex" slot="end">
+      <p
+        slot="end"
+        routerLink="/main/view-details/{{job.bookingData?.currentUser?.userId}}/{{job.bookingData?.id}}/{{job.bookingData.stage}}"
+      >
+        View Details
+      </p>
+    </div>
+  </section>
+  <div class="buttons">
+    <button type="submit" class="cancel save" (click)="accept.emit()">
+      Accept
+    </button>
+    <button class="cancel first-button" id="open-modal{{job.bookingData.id}}">Reject</button>
+  </div>
+  
+  <ion-modal #rejectModal trigger="open-modal{{job.bookingData.id}}" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <ion-card-title style="
+          font-size: 30px;
+          color: #f75555;
+          text-align: center;
+          margin-top: 20px;
+        ">Reject</ion-card-title>
+      <ion-item-divider></ion-item-divider>
+      <ion-card-subtitle style="
+          text-align: center;
+          margin-top: 10px;
+          color: #181f29;
+          font-weight: 600;
+          font-size: 16px;
+          font-style: normal;
+          margin-bottom: 20px;
+        ">Are you sure you want to Reject?</ion-card-subtitle>
+      <div style="padding-bottom: 20px">
+        <ion-button class="cancel-btn" fill="clear" (click)="rejectModal.dismiss()">Cancel</ion-button>
+        <ion-button class="logout-btn" (click)="rejectJob()" fill="clear">Yes , Reject
+        </ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+</main>

@@ -1,0 +1,79 @@
+<app-header headerName="Type Of Jobs & Areas Preference" *ngIf="router.url != '/main/area-jobs'"></app-header>
+<ion-content>
+  <div class="text-image">
+    <h1 *ngIf="router.url == '/main/area-jobs'">Type Of Jobs & Areas</h1>
+    <p>Select services that you provide in areas</p>
+    <img src="assets/images/auth/signup/services.svg" />
+  </div>
+  <section>
+    <ng-container *ngIf="loading | async">
+      <div
+        class="service shimmer-effect lines shine"
+        *ngFor="let item of fakeServices"
+      ></div>
+    </ng-container>
+    <ion-accordion-group *ngIf="!(loading | async)">
+      <ion-accordion lines="none" *ngFor="let area of areaWiseServiceCatalogue | async" [value]="area.id">
+        <ion-item class="bordered-ion-item" lines="none" slot="header">
+          <ion-label>{{area.name ? area?.name : area.geoProofingLocality | titlecase}}</ion-label>
+          <!-- <ion-checkbox [checked]="area.active" (ionChange)="selectArea($event,area)" color="dark" (click)="handleCheckboxClick($event)"></ion-checkbox> -->
+        </ion-item>
+        <div class="ion-padding categories" slot="content">
+        <ion-accordion-group>
+          <ion-label *ngIf="area.categories.length == 0" class="nothing">Nothing under this area</ion-label>
+          <ion-accordion lines="none" *ngFor="let category of area?.categories" [value]="category.id">
+            <ion-item class="bordered-ion-item" lines="none" slot="header">
+              <ion-label>{{category.name | titlecase}}</ion-label>
+            </ion-item>
+            <div class="ion-padding categories" slot="content">
+              <ion-label *ngIf="category.subCategories.length == 0" class="nothing">Nothing under this category</ion-label>
+              <ion-item *ngFor="let subCategory of category.subCategories" class="bordered-ion-item" lines="none">
+                <ion-label>{{subCategory.name}}</ion-label>
+                <ion-checkbox [checked]="subCategory.checked" (ionChange)="selectCategory($event,category,subCategory,area)"
+                  color="dark"></ion-checkbox>
+              </ion-item>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+     <!--<p class="divider-text">Preferred Areas</p>
+    <ion-item class="bordered-ion-item" *ngFor="let area of areas | async" lines="none">
+      <ion-label>{{area.name ? area?.name : area.geoProofingLocality | titlecase}}</ion-label>
+      <ion-checkbox [checked]="area.active" (ionChange)="selectArea($event,area)" color="dark"></ion-checkbox>
+    </ion-item> -->
+  </section>
+  <div class="buttons" *ngIf="router.url != '/main/area-jobs'">
+    <ion-button
+      color="dark"
+      expand="full"
+      fill="outline"
+      (click)="close()"
+      shape="round"
+    >
+      Cancel
+    </ion-button>
+    <ion-button
+      color="dark"
+      expand="full"
+      (click)="submit()"
+      fill="solid"
+      shape="round"
+    >
+      Save
+    </ion-button>
+  </div>
+</ion-content>
+<ion-footer [translucent]="true" *ngIf="router.url == '/main/area-jobs'">
+  <ion-toolbar>
+    <ion-title>
+      <div class="button-container">
+        <ion-buttons class="buttons1">
+          <ion-button type="submit" class="cancel save" (click)="submit()">Save</ion-button >
+        </ion-buttons>
+        </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
+

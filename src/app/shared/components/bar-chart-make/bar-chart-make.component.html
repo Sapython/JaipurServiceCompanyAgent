@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="chart">
+    <div class="bar" *ngFor="let month of months">
+      <div
+        class="bottom"
+        (click)="changeMonth(month)"
+        [style.height]="month.percentage"
+        [ngStyle]="{
+          'background-color':
+            currentSlectedMonth == month.name ? '#3900D0' : '#9C80F580'
+        }"
+      ></div>
+    </div>
+  </div>
+</div>
+<div class="label">
+  <span *ngFor="let month of months">{{ month.name }}</span>
+</div>

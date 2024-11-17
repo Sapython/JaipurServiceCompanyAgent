@@ -1,0 +1,197 @@
+<app-header headerName="Working Days" backUrl="main/home"></app-header>
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <section class="working">
+      <div class="row-1">
+        <section class="left" *ngIf="(working | async)">
+          <img src="assets/icon/home2/circle.svg" alt="" />
+          <h1>Marked as working</h1>
+        </section>
+        <section class="left" *ngIf="(working | async)!=true && (working | async)!=false">
+          <img src="assets/icon/cross.svg" alt="" />
+          <h1>Not Accepting Job Today</h1>
+        </section>
+        <section class="left" *ngIf="(working | async)==false">
+          <img src="assets/icon/cross.svg" alt="" />
+          <h1>Not Accepting Job Till Resume</h1>
+        </section>
+        <section class="right">
+          <img src="assets/icon/home2/cheveron.svg" alt="" />
+        </section>
+      </div>
+
+      <div class="row-2">
+        <button
+          class="off"
+          (click)="setAsWorking()"
+          [ngClass]="{on:(working | async)}"
+        >
+          Working
+        </button>
+        <button
+          class="off"
+          id="stopNewJob"
+          [ngClass]="{on:((working | async) !== true)}"
+        >
+          Stop New Job
+        </button>
+        <ion-modal
+          [initialBreakpoint]=".4"
+          [breakpoints]="[.4,1]"
+          trigger="stopNewJob"
+          #notWorkingPopover
+        >
+          <ng-template>
+            <ion-content class="ion-padding">
+              <ion-item
+                button
+                expand="block"
+                fill="clear"
+                (click)="setAsNonWorking(today)"
+              >
+                For Today
+              </ion-item>
+              <!-- <ion-item
+                button
+                expand="block"
+                (click)="datepicker.open()"
+                fill="clear"
+              >
+                <ion-label>Open Calendar</ion-label>
+                <input
+                  (dateChange)="setAsNonWorking($event.value)"
+                  hidden
+                  matInput
+                  [matDatepicker]="datepicker"
+                />
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="datepicker"
+                ></mat-datepicker-toggle>
+              </ion-item> -->
+              <mat-datepicker touchUi #datepicker>
+                <mat-datepicker-actions>
+                  <ion-button
+                    expand="block"
+                    fill="outline"
+                    color="dark"
+                    matDatepickerCancel
+                    shape="round"
+                  >
+                    Cancel
+                  </ion-button>
+                  <ion-button
+                    expand="block"
+                    fill="solid"
+                    color="dark"
+                    shape="round"
+                    matDatepickerApply
+                  >
+                    Apply
+                  </ion-button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+              <ion-item
+                (click)="setAsNonWorking(false)"
+                button
+                expand="block"
+                fill="clear"
+              >
+                Till I Resume Working
+              </ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </div>
+    </section>
+    <section class="date">
+      <!-- TODO: -->
+      <!-- <h2>{{(currentSlot | async)?.day?.toDate() | date}}</h2> -->
+      <div class="btn">
+        <button
+        (click)="date.working ? toggleDateSlot(false,date) : toggleDateSlot(true,date) "
+        *ngFor="let date of slots | async;let i = index"
+          [ngClass]="date.working ? 'on':'off'"
+        >
+          {{date.day.toDate() | date:'dd'}}<br />{{date.day.toDate() |
+          date:'E'}}<br />
+          <ion-icon
+            color="success"
+            *ngIf="date.working"
+            name="checkmark-outline"
+          ></ion-icon>
+          <ion-icon
+            color="danger"
+            *ngIf="!date.working"
+            name="close-outline"
+          ></ion-icon>
+        </button>
+      </div>
+    </section>
+    <section class="job">
+      <div class="row-1">
+        <section class="left">
+          <img src="assets/icon/home2/bag.svg" alt="" />
+          <h1>Per day jobs</h1>
+        </section>
+        <section class="right">
+          <img src="assets/icon/home2/cheveron.svg" alt="" />
+        </section>
+      </div>
+
+      <div class="row-2">
+        <ion-range
+          mode="ios"
+          [value]="jobsPerDay | async"
+          (ionChange)="setPerDayJob($event)"
+          [pin]="true"
+          color="dark"
+          aria-label="Range with ticks"
+          [ticks]="true"
+          [snaps]="true"
+          [min]="1"
+          [max]="7"
+        ></ion-range>
+      </div>
+    </section>
+    <section class="workingHours">
+      <div class="row-1">
+        <section class="left">
+          <img src="assets/icon/home2/clock.svg" alt="" />
+          <h1>Working hours</h1>
+        </section>
+        <section class="right">
+          <img src="assets/icon/home2/cheveron.svg" alt="" />
+        </section>
+      </div>
+
+      <div
+        class="rows"
+        *ngFor="let hour of timeSlots | async"
+      >
+        <h1>{{hour.name}}</h1>
+        <ion-toggle
+          (ionChange)="toggleTimeSlot(hour)"
+          [checked]="hour.enabled"
+          [value]="hour"
+          aria-label="Dark toggle"
+          color="dark"
+        ></ion-toggle>
+      </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <ion-button style="padding-bottom: 20px;"
+      class="ion-margin"
+      (click)="save()"
+      expand="block"
+      fill="solid"
+      shape="round"
+    >
+    Confirm and update calendar
+    </ion-button>
+    <br />
+    <br />
+  </div>
+</ion-content>

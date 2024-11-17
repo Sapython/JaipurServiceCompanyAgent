@@ -1,0 +1,357 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: lato;
+}
+
+ion-content {
+  --background: #f7f7f7;
+  --position: relative;
+}
+ion-card {
+  box-shadow: none;
+}
+.view-details-container {
+  .details-inner-container {
+    background: white;
+  }
+
+  .heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1d1f;
+  }
+
+  .time-id {
+    background: #f7f7f7;
+
+    .time {
+      font-size: 14px;
+      color: #181f29;
+    }
+
+    .id {
+      font-size: 12px;
+      color: #444;
+    }
+  }
+
+  .status {
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 10px;
+
+    .head {
+      color: #444;
+      font-weight: 700;
+    }
+
+    .job-status {
+      padding: 5px 10px;
+      color: #666;
+      font-size: 10px;
+      border-radius: 5px;
+      background: #e9e9e9;
+    }
+    .acceptancePending{
+      color: #00518B;
+      background-color: rgba(0, 81, 139, 0.25);
+    }
+    .jobAccepted{
+      color: #00518B;
+      background-color: rgba(0, 81, 139, 0.25);
+    }
+    .jobStarted{
+      color: #007EDA;
+      background-color: rgba(0, 126, 218, 0.25);
+    }
+    .otpVerificationPending{
+      color: #007EDA;
+      background-color: rgba(0, 126, 218, 0.25);
+    }
+    .workStarted{
+      color: #D7C206;
+      background-color: rgba(215, 194, 6, 0.25);
+    }
+    .inProgress{
+      color: #D7C206;
+      background-color: rgba(215, 194, 6, 0.25);
+    }
+    .workCompleted{
+      color: #D7C206;
+      background-color: rgba(215, 194, 6, 0.25);
+    }
+    .expired{
+      color: #A8A8A8;
+      background-color: rgba(168, 168, 168, 0.25);
+    }
+    .discarded{
+      color: #C92323;
+      background-color: rgba(201, 35, 35, 0.25);
+    }
+    .paymentPending{
+      color: #07BF72;
+      background-color: rgba(7, 191, 114, 0.25);
+    }
+    .paymentCompleted{
+      color: #07BF72;
+      background-color: rgba(7, 191, 114, 0.25);
+    }
+    .completed{
+      color: #07BF72;
+      background-color: rgba(7, 191, 114, 0.25);
+    }
+  }
+
+  .job-full-details {
+    border-bottom: 1px solid #d7d7d7;
+    border-bottom-style: dashed;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .name {
+      width: 60%;
+    }
+
+    .service-time {
+      margin-top: 10px;
+
+      .service-details {
+        width: 76%;
+      }
+
+      .service-dist {
+        width: 22%;
+      }
+    }
+
+    .job-details-container {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-around;
+
+      .job-detail {
+        margin-left: 15px;
+        width: 60%;
+
+        .fee {
+          color: #444;
+          font-size: 14px;
+          font-weight: 500;
+          padding-top: 5px;
+        }
+
+        .job-work {
+          color: #6f767e;
+          font-size: 12px;
+          font-weight: 500;
+          padding-top: 5px;
+        }
+      }
+    }
+
+    .job-price {
+      text-align: right;
+      padding-top: 5px;
+      font-weight: 700;
+      width: 30%;
+
+      .total {
+        color: #579540;
+      }
+
+      .discount {
+        color: #c16256;
+      }
+
+      .ul {
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 12px;
+        font-weight: 500;
+
+        .time {
+          padding-left: 5px;
+        }
+      }
+
+      .dot {
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(0, 0, 0, 0.55);
+        margin-top: 6px;
+      }
+    }
+  }
+
+  .total-price {
+    font-weight: 600;
+    color: #181f29;
+    margin-top: 0.5rem;
+    padding-bottom: 15px;
+  }
+
+  .location {
+    background-color: white;
+    margin-top: 5px;
+    .head {
+      color: #444;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .address {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 12px;
+      font-weight: 400;
+      margin: 2px 0px 0px 5px;
+    }
+  }
+
+  .button-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+
+    .buttons {
+      margin-left: 0px;
+      margin-right: 0px;
+      justify-content: space-between;
+
+      .first-button {
+        margin-right: 20px;
+      }
+
+      .cancel {
+        width: 48%;
+        font-family: lato;
+        text-transform: none;
+        color: #181f29;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 12px;
+        border: 1px solid var(--primary, #181f29);
+        background: var(--SECONDARY, #fff);
+        box-shadow: 0px 2px 6px 1px rgba(22, 22, 22, 0.1);
+        margin-right: 0px;
+      }
+
+      .save {
+        background: var(--primary, #181f29);
+        color: white;
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .job-accepted {
+    div {
+      border-radius: 4px;
+      opacity: 0.8;
+      background: #d9f2cf;
+      padding: 10px 10px 10px 30px;
+    }
+    .text {
+      color: #579540;
+      font-size: 12px;
+      font-weight: 400;
+      padding-left: 7px;
+      padding-top: 2.5px;
+    }
+    img {
+      color: #579540;
+    }
+  }
+}
+
+.fontandColor {
+  font-size: 14px;
+  color: #444;
+}
+
+.timeandNum {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.job-completed-add {
+  .address-container {
+    margin-bottom: 10px;
+    .head {
+      color: #444;
+      font-size: 14px;
+    }
+    .address {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.55);
+      margin-left: 5px;
+      margin-top: 2px;
+    }
+  }
+
+  .job {
+    margin-bottom: 7px;
+  }
+}
+
+ion-modal {
+  --border-radius: 20px 20px 20px 20px;
+}
+#open-modal {
+  width: 150px;
+  height: 40px;
+  border-radius: 30px;
+  padding-bottom: 2px;
+  line-height: normal;
+  text-transform: none;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  margin-top: 10px;
+  margin-left: -15px;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+ion-modal {
+  --height: auto;
+}
+.cancel-btn {
+  border: 1px solid var(--primary, #181f29);
+
+  color: #181f29;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 5px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 45px;
+  width: 135px;
+  text-transform: none;
+  display: inline-block;
+}
+.logout-btn {
+  border: 1px solid var(--primary, #181f29);
+  font-style: normal;
+  background: #181f29;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 5px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 45px;
+  width: 135px;
+  text-transform: none;
+  display: inline-block;
+}
+
+ion-modal {
+  --border-radius: 20px 20px 0px 0px !important;
+}

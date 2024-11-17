@@ -1,0 +1,66 @@
+<app-header headerName="Identity Proof Documents"></app-header>
+
+<ion-content [fullscreen]="true">
+  <h1>KYC Documents</h1>
+  <p>For fast verification share the correct IDs</p>
+  <form [formGroup]="identityForm" (ngSubmit)="submit()">
+    <app-file-input
+      label="Upload Aadhaar"
+      (fileSelected)="aadhaarImage=$event"
+    ></app-file-input>
+
+    <div class="input">
+      <ion-icon name="card"></ion-icon>
+      <input
+        type="text"
+        formControlName="aadhaarNumber"
+        placeholder="Enter Aadhaar Number"
+      />
+    </div>
+    <div class="validation-errors">
+      <div class="error-message" *ngIf="identityForm.get('aadhaarNumber')?.errors && identityForm.get('aadhaarNumber')?.touched">
+        Your aadhar number is invalid!
+      </div>
+  </div>
+
+    <app-file-input
+      label="Upload PAN"
+      (fileSelected)="panImage=$event"
+    ></app-file-input>
+
+    <div class="input">
+      <ion-icon name="id-card"></ion-icon>
+      <input
+        type="text"
+        formControlName="panNumber"
+        placeholder="Enter Pan Number"
+      />
+    </div>
+    <div class="validation-errors">
+      <div class="error-message" *ngIf="identityForm.get('panNumber')?.errors && identityForm.get('panNumber')?.touched">
+        Your PAN number is invalid!
+      </div>
+  </div>
+    <div class="buttons">
+      <ion-button
+        color="dark"
+       (click)="close()"     
+        type="button"
+        expand="full"
+        fill="outline"
+        shape="round"
+      >
+        Cancel
+      </ion-button>
+      <ion-button
+        color="dark"
+        type="submit"
+        expand="full"
+        fill="solid"
+        shape="round"
+      >
+        Save
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,48 @@
+.main {
+  width: auto;
+  height: auto;
+  background-color: white;
+  margin-top: 4px;
+  padding: 0px 16px;
+
+  .chart {
+    justify-content: space-between;
+    display: flex;
+    height: 87px;
+    width: auto;
+
+    .bar {
+      background-color: #e5e4ff;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      display: grid;
+      align-items: end;
+      width: -webkit-fill-available;
+      margin-right: 6px;
+      margin-left: 6px;
+
+      .bottom {
+        // this width is not dynamic
+        // min-width: 40px;
+
+        background-color: #9c80f580;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .bottom:hover {
+        background-color: #3900d0;
+      }
+    }
+  }
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 0px 16px;
+  span {
+    margin: 0px 6px;
+  }
+}

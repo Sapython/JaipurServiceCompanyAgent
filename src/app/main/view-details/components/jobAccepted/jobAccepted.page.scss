@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: lato;
+}
+
+.job-accepted-container {
+  .job-accepted {
+    div {
+      border-radius: 4px;
+      opacity: 0.8;
+      background: #d9f2cf;
+      padding: 10px 10px 10px 30px;
+    }
+    .text {
+      color: #579540;
+      font-size: 12px;
+      font-weight: 400;
+      padding-left: 7px;
+      padding-top: 2.5px;
+    }
+    img {
+      color: #579540;
+    }
+  }
+
+  .location {
+    background-color: white;
+    margin-top: 5px;
+    .head {
+      color: #444;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .address {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 12px;
+      font-weight: 400;
+      margin: 2px 0px 0px 5px;
+    }
+  }
+
+  .slider {
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+
+    .container {
+      flex-direction: column;
+    }
+
+    .track {
+      width: 100%;
+      background: #181f29;
+      color: white;
+      padding: 4px;
+      border-radius: 12px;
+      height: 56px;
+    }
+
+    .text-slider {
+      width: 82%;
+      text-align: center;
+      margin: auto;
+    }
+  }
+}

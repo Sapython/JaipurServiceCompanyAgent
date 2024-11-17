@@ -1,0 +1,28 @@
+{
+  "targets": {
+    "jaipurservicecompany": {
+      "hosting": {
+        "app": [
+          "jaipurservicecompany"
+        ]
+      }
+    },
+    "indiatoursandcabs": {
+      "hosting": {
+        "app": [
+          "indiatoursandcabs"
+        ]
+      }
+    },
+    "jaipurservicecompany-demo": {
+      "hosting": {
+        "app": [
+          "jaipurservicecompany-demo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "jaipurservicecompany-demo"
+  }
+}

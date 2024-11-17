@@ -1,0 +1,17 @@
+<button class="input" (click)="imageInput.click()">
+  <input
+    type="file"
+    [accept]="accept"
+    #imageInput
+    hidden
+    (input)="setImage($event)"
+  />
+  <ion-icon [name]="icon"></ion-icon>
+  <span>{{ label }}</span>
+</button>
+<ng-container *ngIf="binaryImageData">
+  <img [src]="binaryImageData" />
+  <button type="button" class="clear" (click)="clearImage()">
+    <ion-icon name="trash"></ion-icon>
+  </button>
+</ng-container>

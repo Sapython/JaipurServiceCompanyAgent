@@ -1,0 +1,214 @@
+<app-header></app-header>
+<div class="mainContainer">
+  <main>
+    <!-- Segment Start -->
+    <ion-segment
+      [(ngModel)]="selectedSection"
+      [scrollable]="true"
+      class="selector"
+      color="dark"
+      style="background-color: white"
+    >
+      <ion-segment-button (click)="showSection('pending')" value="pending">
+        <ion-label>Pending</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="showSection('ongoing')" value="ongoing">
+        <ion-label>In-Progress</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="showSection('completed')" value="completed">
+        <ion-label>Completed</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="showSection('cancelled')" value="cancelled">
+        <ion-label>Cancelled</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <!-- Segment End -->
+
+    <section id="pending" *ngIf="selectedSection === 'pending'">
+      <div>
+        <ng-container
+          *ngIf="!(isLoading$ | async) && objectKeys(pendingJobs).length ==0;"
+        >
+          <p class="center">You don't have any pending job</p>
+        </ng-container>
+        <ng-container *ngIf="isLoading$ | async">
+          <div class="bookings-shimmer" *ngFor="let item of [0,1,2]">
+            <app-pending-job-skeleton></app-pending-job-skeleton>
+          </div>
+        </ng-container>
+        <div *ngIf="objectKeys(pendingJobs).length > 0;">
+          <ion-content class="content" padding>
+            <ng-container *ngFor="let item of pendingJobs | keyvalue">
+              <div class="date">
+                <span>{{$any(item.key) | date:'dd MMM y'}}</span>
+              </div>
+              <div class="bookings-card">
+                <app-booking-card
+                  [booking]="booking"
+                  *ngFor="let booking of $any(item).value"
+                ></app-booking-card>
+              </div>
+            </ng-container>
+            <ion-infinite-scroll
+              (ionInfinite)="onIonInfinite($event,'pending')"
+            >
+              <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-content>
+        </div>
+      </div>
+    </section>
+
+    <div id="ongoing" *ngIf="selectedSection === 'ongoing'">
+      <p
+        *ngIf="!(isLoading$ | async) && objectKeys(inProgressJobs).length == 0;"
+        class="center"
+      >
+        You don't have any in-progress job
+      </p>
+      <ng-container *ngIf="isLoading$ | async">
+        <div class="bookings-shimmer" *ngFor="let item of [0,1,2]">
+          <app-pending-job-skeleton></app-pending-job-skeleton>
+        </div>
+      </ng-container>
+      <div *ngIf="objectKeys(inProgressJobs).length > 0;">
+        <ion-content class="content" padding>
+          <ng-container *ngFor="let item of inProgressJobs | keyvalue">
+            <div class="date">
+              <span>{{$any(item.key) | date:'dd MMM y'}}</span>
+            </div>
+            <div class="bookings-card">
+              <app-booking-card
+                [booking]="booking"
+                *ngFor="let booking of $any(item).value"
+              ></app-booking-card>
+            </div>
+          </ng-container>
+          <ion-infinite-scroll (ionInfinite)="onIonInfinite($event,'ongoing')">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </ion-content>
+      </div>
+    </div>
+    <div id="completed" *ngIf="selectedSection === 'completed'">
+      <div class="datepicker">
+        <mat-form-field appearance="outline" fxFlex="40">
+          <mat-label>Select Date</mat-label>
+          <mat-date-range-input
+            [formGroup]="completedJobDateRange"
+            [rangePicker]="picker"
+            [max]="today"
+          >
+            <input
+              matStartDate
+              formControlName="start"
+              placeholder="Start date"
+            />
+            <input matEndDate formControlName="end" placeholder="End date" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker touchUi #picker>
+            <mat-date-range-picker-actions>
+              <button mat-button matDateRangePickerCancel>Cancel</button>
+              <button
+                mat-raised-button
+                color="primary"
+                matDateRangePickerApply
+                (click)="showSection('completed')"
+              >
+                Apply
+              </button>
+            </mat-date-range-picker-actions>
+          </mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <p
+        *ngIf="!(isLoading$ | async) && objectKeys(completedJobs).length == 0;"
+        class="center"
+      >
+        You don't have any completed job
+      </p>
+      <ng-container *ngIf="isLoading$ | async">
+        <div class="bookings-shimmer" *ngFor="let item of [0,1,2]">
+          <app-pending-job-skeleton></app-pending-job-skeleton>
+        </div>
+      </ng-container>
+      <div *ngIf="objectKeys(completedJobs).length> 0;">
+        <ng-container *ngFor="let item of completedJobs | keyvalue">
+          <div class="date">
+            <span>{{$any(item.key) | date:'dd MMM y'}}</span>
+          </div>
+          <div class="bookings-card">
+            <app-booking-card
+              [booking]="booking"
+              *ngFor="let booking of $any(item).value"
+            ></app-booking-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div id="cancelled" *ngIf="selectedSection === 'cancelled'">
+      <div class="datepicker">
+        <mat-form-field appearance="outline" fxFlex="40">
+          <mat-label>Select Date</mat-label>
+          <mat-date-range-input
+            [formGroup]="cancelledJobsDateRange"
+            [rangePicker]="picker1"
+            [max]="today"
+          >
+            <input
+              matStartDate
+              formControlName="start"
+              placeholder="Start date"
+            />
+            <input matEndDate formControlName="end" placeholder="End date" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker touchUi #picker1>
+            <mat-date-range-picker-actions>
+              <button mat-button matDateRangePickerCancel>Cancel</button>
+              <button
+                mat-raised-button
+                color="primary"
+                matDateRangePickerApply
+                (click)="showSection('cancelled')"
+              >
+                Apply
+              </button>
+            </mat-date-range-picker-actions>
+          </mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <p
+        *ngIf="!(isLoading$ | async)&& objectKeys(cancelledJobs).length == 0;"
+        class="center"
+      >
+        You don't have any cancelled job
+      </p>
+      <ng-container *ngIf="isLoading$ | async">
+        <div class="bookings-shimmer" *ngFor="let item of [0,1,2]">
+          <app-pending-job-skeleton></app-pending-job-skeleton>
+        </div>
+      </ng-container>
+      <div *ngIf="objectKeys(cancelledJobs).length > 0;">
+        <ng-container *ngFor="let item of cancelledJobs | keyvalue">
+          <div class="date">
+            <span>{{$any(item.key) | date:'dd MMM y'}}</span>
+          </div>
+          <div class="bookings-card">
+            <app-booking-card
+              [booking]="booking"
+              *ngFor="let booking of $any(item).value"
+            ></app-booking-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,16 @@
+.app-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0px 15px;
+  div {
+    p {
+      color: var(--primary, #444);
+      font-size: 12px;
+      font-family: Lato;
+      font-weight: 500;
+      margin: 0px;
+    }
+  }
+}

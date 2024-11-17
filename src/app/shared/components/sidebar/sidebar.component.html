@@ -1,0 +1,180 @@
+<ion-card>
+  <ion-button fill="clear" class="close-btn" (click)="close()">
+    <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+  </ion-button>
+  <img [src]="(agentData | async)?.photoUrl" class="profile-pic" />
+  <h4 style="text-align: center; color: #fff">
+    {{ (agentData | async)?.name }}
+  </h4>
+  <span
+    ><img src="../../assets/images/filled.png" style="margin-left: 111px"
+  /></span>
+  <p
+    style="
+      margin-top: -20px;
+      text-align: center;
+      color: #fff;
+      margin-left: 10px;
+    "
+  >
+    4.5 (87)
+  </p>
+</ion-card>
+<div style="margin-left: 20px">
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="edit-profile"
+    (click)="close()"
+    routerLink="edit-profile"
+  >
+    <ion-icon
+      class="icon-class"
+      name="person-outline"
+      item-left
+      color="primary"
+    ></ion-icon>
+    <span margin-left>Profile</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="close()"
+    routerLink="jobs-preference"
+  >
+    <img class="icon-class" src="assets/icon/job-catagery.svg" alt="" />
+    <span margin-left> Job Category & Area Preferences</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="close()"
+    routerLink="identity-proof"
+  >
+    <img class="icon-class" src="assets/icon/identity.svg" alt="" />
+    <span margin-left>Identity Proof Documents</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="close()"
+    routerLink="edit-address"
+  >
+    <ion-icon
+      class="icon-class"
+      name="location-outline"
+      item-left
+      color="primary"
+    ></ion-icon>
+    <span margin-left>Your Address</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="about()"
+  >
+    <ion-icon
+      class="icon-class"
+      name="alert-circle-outline"
+      item-left
+      color="primary"
+    ></ion-icon>
+    <span margin-left>About Jaipur Service Company</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="close()"
+    routerLink="contact-us"
+  >
+    <ion-icon
+      class="icon-class"
+      name="call-outline"
+      item-left
+      color="primary"
+    ></ion-icon>
+    <span margin-left>Contact us</span>
+  </ion-row>
+
+  <ion-row
+    margin-bottom
+    margin-top
+    padding-top
+    class="job-history"
+    (click)="close()"
+    id="open-modal1"
+  >
+    <ion-icon
+      class="icon-class"
+      item-left
+      color="primary"
+      name="log-out-outline"
+    ></ion-icon>
+    <span margin-left>Sign Out</span>
+  </ion-row>
+</div>
+<div class="shreeva-logo">
+  <img src="assets/icon/shreeva-logo.png" />
+  <h2>
+    Powered By <br />
+    Shreeva
+  </h2>
+</div>
+<ion-modal
+  #signOutModal
+  trigger="open-modal1"
+  [initialBreakpoint]="1"
+  [breakpoints]="[0, 1]"
+>
+  <ng-template>
+    <ion-card-title
+      style="
+        font-size: 30px;
+        color: #f75555;
+        text-align: center;
+        margin-top: 20px;
+      "
+      >Logout</ion-card-title
+    >
+    <ion-item-divider></ion-item-divider>
+    <ion-card-subtitle
+      style="
+        text-align: center;
+        margin-top: 10px;
+        color: #181f29;
+        font-weight: 600;
+        font-size: 16px;
+        font-style: normal;
+        margin-bottom: 20px;
+      "
+      >Are you sure you want to Logout?</ion-card-subtitle
+    >
+    <div style="padding-bottom: 20px">
+      <ion-button
+        class="cancel-btn"
+        fill="clear"
+        (click)="signOutModal.dismiss()"
+        >Cancel</ion-button
+      >
+      <ion-button class="logout-btn" (click)="logout()" fill="clear"
+        >Yes , Logout
+      </ion-button>
+    </div>
+  </ng-template>
+</ion-modal>

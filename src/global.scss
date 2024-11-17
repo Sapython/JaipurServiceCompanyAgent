@@ -1,0 +1,134 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("common.scss");
+
+ion-button {
+  --border-radius: 10px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  text-transform: none;
+}
+ion-button[color="dark"] {
+  color: #fff;
+  text-align: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+ion-select::part(container) {
+  width: 100%;
+  padding: 10px 13px;
+}
+ion-select::part(icon) {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.cdk-overlay-container {
+  z-index: 999999;
+}
+
+.shimmer-effect {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  .shine {
+    background: #f6f7f8;
+    background-image: linear-gradient(
+      to right,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 104px;
+    display: block;
+    position: relative;
+
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmer;
+    -webkit-animation-timing-function: linear;
+
+    &.w_15 {
+      width: 15%;
+    }
+    &.w_77 {
+      width: 77%;
+    }
+    &.w_70 {
+      width: 70%;
+    }
+  }
+  .box {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  .div {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 25px;
+    margin-top: 10px;
+    vertical-align: top;
+  }
+  .lines {
+    height: 15px;
+    margin-top: 1px;
+    width: 100px;
+    border-radius: 6px;
+  }
+
+  @-webkit-keyframes placeholderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+
+    100% {
+      background-position: 468px 0;
+    }
+  }
+}
+
+pwa-camera-modal-instance {
+  z-index: 99999;
+}
+// .agent-toast {
+//   ::ng-deep{
+//       .toast-wrapper{
+//           margin-bottom:60px;
+//       }
+//   }
+// }

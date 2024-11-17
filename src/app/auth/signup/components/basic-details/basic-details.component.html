@@ -1,0 +1,90 @@
+<ion-content>
+  <section>
+    <h1>Welcome, New Agent!</h1>
+    <p>Please fill the details for further process</p>
+    <img src="assets/images/auth/signup/basic-detail.svg" />
+  </section>
+  <section>
+    <form [formGroup]="basicDetailForm" (ngSubmit)="submit()">
+      <div class="input">
+        <ion-icon name="person"></ion-icon>
+        <input type="text" formControlName="name" placeholder="Enter Name" />
+      </div>
+
+      <app-file-input
+        label="Upload Profile Picture"
+        (fileSelected)="userImage = $event"
+      ></app-file-input>
+
+      <div class="input">
+        <ion-icon name="male-female"></ion-icon>
+        <ion-select
+          formControlName="gender"
+          aria-label="state"
+          interface="action-sheet"
+          toggleIcon="chevron-down"
+          justify="space-between"
+          placeholder="Gender"
+        >
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input">
+        <ion-icon name="mail"></ion-icon>
+        <input type="email" formControlName="email" placeholder="Enter Mail" />
+      </div>
+      <div class="input">
+        <ion-icon name="calendar"></ion-icon>
+        <input
+          formControlName="dateOfBirth"
+          placeholder="Date Of Birth"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </div>
+
+      <app-file-input
+        label="Upload Aadhaar"
+        (fileSelected)="aadhaarImage = $event"
+      ></app-file-input>
+
+      <div class="input">
+        <ion-icon name="card"></ion-icon>
+        <input
+          type="text"
+          formControlName="aadhaarNumber"
+          placeholder="Enter Aadhaar Number"
+        />
+      </div>
+
+      <app-file-input
+        label="Upload Pan"
+        (fileSelected)="panImage = $event"
+      ></app-file-input>
+
+      <div class="input">
+        <ion-icon name="id-card"></ion-icon>
+        <input
+          type="text"
+          formControlName="panNumber"
+          placeholder="Enter Pan Number"
+        />
+      </div>
+      <ion-button
+        type="submit"
+        expand="block"
+        color="dark"
+        [disabled]="basicDetailForm.invalid"
+      >
+        Next
+      </ion-button>
+    </form>
+  </section>
+</ion-content>

@@ -1,0 +1,127 @@
+<app-header headerName ='Notification' (markAllNotificationsAsRead)="markAllNotificationsAsRead()"></app-header>
+
+<div class="container">
+  <ng-container *ngIf="!(isLoading$ | async) && todayNotifications.length !== 0">
+    <span>
+      <h2 style="font-size: 16px; margin-left: 16px; color: #181f29">Today</h2>
+    </span>
+
+    <ion-item-sliding *ngFor="let item of todayNotifications" #slidingItem1>
+      <ion-item-options
+        side="start"
+        expandable
+        class="ion-no-padding"
+        class="itemOptions"
+      >
+        <div class="delete-main">
+          <div class="payment">
+            <span (click)="onDeleteNotification(item.id,'today');slidingItem1.close()" id="open-toast{{item.id}}"
+              ><img src="assets/icon/delete.svg"
+            /></span>
+          </div>
+        </div>
+      </ion-item-options>
+      <ion-item
+        class="ion-item"
+        lines="none"
+        class="ion-no-padding"
+        style="margin-left: 16px"
+      >
+        <div class="user">
+          <div class="payment">
+            <span><img src="assets/icon/category-2.svg" /></span>
+            <div class="bio">
+              <h2 [ngStyle]="{'color' : item.read ? '#7C7C7C': '#181F29' }">
+                {{item.title}}
+              </h2>
+              <h6>{{item.body}}</h6>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-toast
+      trigger="open-toast{{item.id}}"
+      [duration]="3000"
+      message="Delete"
+      class="custom-toast"
+      position="bottom"
+      positionAnchor="footer"
+      [buttons]="toastButtons"
+    ></ion-toast>
+    </ion-item-sliding>
+  </ng-container>
+
+    <ng-container *ngIf="!(isLoading$ | async) && olderNotifications.length !== 0">
+    <span>
+      <h2 style="font-size: 16px; margin-left: 16px; color: #181f29">Older</h2>
+    </span>
+
+    <ion-item-sliding *ngFor="let item of olderNotifications" #slidingItem2>
+      <ion-item-options
+        side="start"
+        expandable
+        class="ion-no-padding"
+        class="itemOptions"
+      >
+        <div class="delete-main">
+          <div class="payment" style="padding-left: 16px">
+            <span (click)="onDeleteNotification(item.id,'older'); slidingItem2.close()" id="open-toast{{item.id}}"
+              ><img src="assets/icon/delete.svg"
+            /></span>
+          </div>
+        </div>
+      </ion-item-options>
+      <ion-item
+        class="ion-item"
+        lines="none"
+        class="ion-no-padding"
+        style="margin-left: 16px"
+      >
+        <div class="user">
+          <div class="payment">
+            <span><img src="assets/icon/category-2.svg" /></span>
+            <div class="bio">
+              <h2 [ngStyle]="{'color' : item.read ? '#7C7C7C': '#181F29' }">
+                {{item.title}}
+              </h2>
+              <h6>{{item.body}}</h6>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-toast
+      trigger="open-toast{{item.id}}"
+      [duration]="3000"
+      message="Delete"
+      class="custom-toast"
+      position="bottom"
+      positionAnchor="footer"
+      [buttons]="toastButtons"
+    ></ion-toast>
+    </ion-item-sliding>
+  </ng-container>
+<!-- 
+  <div class="delete-box" *ngIf="showUndoPopup">
+    <span>Delete</span>
+    <div class="undo" (click)="onUndoDelete()">Undo</div>
+  </div> -->
+  <ng-container *ngIf="isLoading$ | async">
+    <section class="card shimmer-effect" *ngFor="let i of [0,1,2,3,4]">
+      <div class="box shine"></div>
+      <div class="card-details">
+        <div class="div1 lines shine"></div>
+        <div class="div2 lines shine"></div>
+      </div>
+    </section>
+  </ng-container>
+
+  <ng-container *ngIf="!(isLoading$ | async) && olderNotifications?.length == 0 && todayNotifications?.length == 0">
+    <div class="noNotifiation">
+      <div>
+        <img src="assets/icon/NoNotification.svg" />
+        <h2>No Notifications!</h2>
+        <h6>You dont have any notification yet. Please place order</h6>
+      </div>
+    </div>
+  </ng-container>
+</div>

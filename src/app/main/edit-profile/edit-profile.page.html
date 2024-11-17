@@ -1,0 +1,78 @@
+<app-header headerName="Edit Profile"></app-header>
+<ion-content>
+  <form [formGroup]="editProfileForm" (ngSubmit)="updateUser()">
+    <div class="container">
+      <div class="outer"
+        [ngStyle]="{'background-image': 'url(' + photoUrl + ')'}">
+          <div class="inner" (click)="profilePicker.click()">
+             <img  class="camera-icon"src="assets/icon/camera-icon.svg" alt="">
+          </div>
+       </div>
+    </div>
+    <input
+      type="file"
+      hidden
+      tabindex="-1"
+      accept="image/*"
+      (input)="setPhoto($event)"
+      #profilePicker
+    />
+    <div class="input">
+      <ion-icon name="person"></ion-icon>
+      <input type="text" formControlName="name" placeholder="Enter Name" />
+    </div>
+
+    <div class="input">
+      <ion-icon name="male-female"> </ion-icon>
+      <ion-select
+        formControlName="gender"
+        aria-label="state"
+        interface="action-sheet"
+        toggleIcon="chevron-down"
+        justify="space-between"
+        placeholder="Gender"
+      >
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="input">
+      <ion-icon name="mail"></ion-icon>
+      <input type="email" formControlName="email" placeholder="Enter Mail" />
+    </div>
+    <div class="input">
+      <ion-icon name="calendar"></ion-icon>
+      <input
+        formControlName="dateOfBirth"
+        placeholder="Date Of Birth"
+        matInput
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </div>
+    <div class="buttons">
+      <ion-button
+        type="button"
+        expand="block"
+        fill="outline"
+        color="dark"
+        (click)="close()"
+      >
+        Cancel
+      </ion-button>
+        <ion-button 
+        type="submit" 
+        expand="block" 
+        color="dark" 
+        [disabled]="editProfileForm.invalid"
+        > 
+        Save 
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <section class="header">
+    <img src="assets/images/logo.png" alt="" />
+    <h1>Jaipur Service Company</h1>
+    <p>Agent App</p>
+  </section>
+  <img src="assets/images/loginScreen.svg" alt="" />
+
+  <section class="login">
+    <h3>Welcome Back</h3>
+    <h6>Please fill the details for further process</h6>
+    <form [formGroup]="phoneLoginForm">
+      <div class="phoneInput">
+        <ion-icon name="call"></ion-icon>
+        <input
+          type="text"
+          placeholder="Mobile Number"
+          inputmode="tel"
+          formControlName="phoneNumber"
+          required
+          maxlength="10"
+        />
+      </div>
+      <ion-button class="signup" color="dark" (click)="login()"
+        >Send OTP</ion-button
+      >
+    </form>
+    <div id="recaptcha-container"></div>
+  </section>
+</ion-content>
+<ion-footer class="footer-section">
+  <img src="assets/images/footer-1.png" style="height: 100px" />
+    <img
+      src="assets/images/footer-2.png"
+      style="height: 80px; margin-top: auto"
+    />
+</ion-footer>

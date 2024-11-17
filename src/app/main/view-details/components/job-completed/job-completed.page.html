@@ -1,0 +1,78 @@
+<main class="job-completed-container">
+  <section >
+    <div class="payment-detail p-15">
+      <div class="d-flex margin-top-bottom justify-content-between">
+        <p class="details">Payment Details</p>
+        <p class="status">Completed</p>
+      </div>
+      <div class="d-flex margin-top-bottom justify-content-between" style="margin: 8px 0 14px 0">
+        <p class="mode">Payment Mode</p>
+        <p class="paytype">Pay After Job</p>
+      </div>
+      <div class="head">
+            <ion-label class="label">You Have Received Payment After Job. </ion-label>
+       </div>
+    </div>
+  </section>
+
+  <section *ngIf="booking?.rating">
+    <div class="rating-main">
+    <div class="row">
+     <div class="rating-text">Your service was rated</div>
+      <div class="d-flex">
+        <ul class="list-inline rating-list d-flex" *ngFor="let star of stars; let i= index" style="display: inline-block">
+          <li>
+            <img *ngIf="star <= booking?.rating.rating" class="camera-icon" src="assets/icon/rating-selected.svg" alt="">
+            <img *ngIf="star > booking?.rating.rating" class="camera-icon" src="assets/icon/rating-unselected.svg" alt="">
+          </li>
+        </ul>
+      </div>
+     </div>
+    <div> {{booking?.rating?.submittedAt?.toDate() | date: "dd MMM yyyy"}}</div>
+  </div>
+  </section>
+
+
+
+  <section>
+    <div class="invoice-download">
+      <div class="d-flex justify-content-between">
+        <p class="invoice">Invoice</p>
+        <p class="img" (click)="downloadInvoice()"><img src="/assets/icon/download.svg" alt="" /></p>
+      </div>
+    </div>
+  </section>
+  <section class="job-completed-rating p-15" *ngIf="!booking?.rating">
+    <div class="d-flex rating-inner">
+      <div class="row">
+        <div class="d-flex">
+          <ul
+            class="list-inline rating-list d-flex"
+            *ngFor="let star of stars; let i= index"
+            style="display: inline-block"
+          >
+            <li
+              
+              id="{{'starId'+i}}"
+              [ngClass]="{'selected': (star <= selectedValue)}"
+              (mouseover)="addClass(star)"
+              (mouseout)="removeClass(star)"
+            >
+              ☆
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="text">Ask customer to rate the service</p>
+    </div>
+  </section>
+  <section class="slider" *ngIf="!booking?.rating">
+    <div class="button-container p-15">
+      <ion-buttons class="buttons">
+        <ion-button class="cancel" routerLink="/main/home"
+          >Back To Home</ion-button
+        >
+      </ion-buttons>
+    </div>
+  </section>
+</main>

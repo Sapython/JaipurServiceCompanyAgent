@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.details {
+  background: rgba(255, 225, 227, 0.8);
+  margin-bottom: 15px;
+  .text {
+    color: #d3424a;
+    font-size: 12px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}

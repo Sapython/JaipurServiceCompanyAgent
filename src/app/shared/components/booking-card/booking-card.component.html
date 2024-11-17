@@ -1,0 +1,94 @@
+<main class="pending-job mt-2" *ngIf="booking">
+  <section
+    class="job-details"
+    routerLink="/main/view-details/{{ booking?.currentUser?.userId }}/{{
+      booking?.id
+    }}/{{booking.stage}}"
+  >
+    <div class="details-img">
+      <img [src]="booking.mainCategory.icon" alt="" />
+    </div>
+    <ion-label class="details-text">
+      <p class="name">{{ booking.subCategory.name }}</p>
+      <p class="id">#{{ booking.id }}</p>
+      <!-- <p class="id">{{ booking.id | slice: 0 : 6 }}</p> -->
+    </ion-label>
+    <div class="metadata-end-wrapper details-price" slot="end">
+      <div class="price">
+        <p slot="end" class="total">
+          {{
+            booking.billing.grandTotal | currency: "INR" : "symbol" : "1.0-0"
+          }}
+        </p>
+        <p slot="end" class="discount">
+          -{{
+            booking.billing.totalJobAcceptanceCharge
+              | currency: "INR" : "symbol" : "1.0-0"
+          }}
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="job-time job-details">
+    <div class="calender details-img">
+      <img src="/assets/icon/calender.svg" alt="" />
+    </div>
+    <ion-label class="details-text details-time">
+      <p class="time">
+        {{ booking.timeSlot?.time?.startTime?.toDate() | date: "shortTime" }}-{{
+          booking.timeSlot?.time?.endTime?.toDate() | date: "shortTime"
+        }}
+      </p>
+      <p class="time date">
+        {{ booking.timeSlot?.date?.toDate() | date: "dd MMM yyyy" }}
+      </p>
+    </ion-label>
+    <div class="d-flex map-details">
+      <div class="distance-img">
+        <img src="/assets/icon/Mask group.svg" alt="" />
+      </div>
+      <div class="metadata-end-wrapper" slot="end">
+        <div slot="end" class="distance">Distance</div>
+        <div slot="end" class="distance km">
+          {{ distance | number: "1.0-2" }} km
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="job-address job-details last-section">
+    <div><img src="/assets/icon/profile.svg" alt="" /></div>
+    <ion-label class="person-details">
+      <p class="person-name">{{ booking.currentUser.name }}</p>
+      <div class="add-name d-flex">
+        <div><img src="/assets/icon/map.svg" alt="" /></div>
+        <p>{{booking.address?.addressLine1}},
+          {{booking.address?.addressLine2}},
+          {{booking.address?.pincode}}
+         </p>
+      </div>
+    </ion-label>
+    <div class="metadata-end-wrapper view-details d-flex" slot="end">
+      <p
+        *ngIf="booking.stage != 'otpVerificationPending'"
+        slot="end"
+        routerLink="/main/view-details/{{ booking.currentUser.userId }}/{{
+          booking.id
+        }}/{{booking.stage}}"
+      >
+        View Details
+      </p>
+      <p
+        *ngIf="booking.stage == 'otpVerificationPending'"
+        slot="end"
+        routerLink="/main/verify-otp/{{ booking.currentUser.userId }}/{{
+          booking.id
+        }}"
+      >
+        View Details
+      </p>
+    </div>
+  </section>
+  <section *ngIf="checkDate(booking.timeSlot?.time?.startTime?.toDate())">
+    <app-timer [targetDate]="booking.timeSlot?.time?.startTime?.toDate()" ></app-timer>
+  </section>
+</main>

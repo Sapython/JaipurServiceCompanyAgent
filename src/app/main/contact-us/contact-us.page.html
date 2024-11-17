@@ -1,0 +1,53 @@
+<app-header headerName="Contact Us"></app-header>
+<ion-content>
+  <main class="p-15 edit-contact">
+    <section class="contact border p-15 mb-4">
+      <div class="heading-section d-flex">
+        <div class="img">
+          <img src="/assets/icon/phone.svg" alt="" />
+        </div>
+        <p class="name">Contact Number</p>
+      </div>
+      <div class="no d-flex justify-content-between">
+        <a href="tel:+91{{contacts?.contact1}}"
+          ><p>+91 {{contacts?.contact1}}</p></a
+        >
+        <a href="tel:+91{{contacts?.contact2}}"
+          ><p>+91 {{contacts?.contact2}}</p></a
+        >
+      </div>
+    </section>
+    <section class="contact border p-15 mb-4">
+      <div class="heading-section d-flex">
+        <div class="img1">
+          <img src="/assets/icon/whatsapp.svg" alt="" />
+        </div>
+        <p class="name">WhatsApp Number</p>
+      </div>
+      <div class="no d-flex justify-content-between">
+        <a href="https://wa.me/91{{contacts?.whatsappNumber1}}"
+          ><p>+91 {{contacts?.whatsappNumber1}}</p></a
+        >
+        <a href="https://wa.me/91{{contacts?.whatsappNumber2}}"
+          ><p>+91 {{contacts?.whatsappNumber2}}</p></a
+        >
+      </div>
+    </section>
+    <section class="contact border p-15 mb-4">
+      <div class="heading-section d-flex">
+        <div class="img1" routerLink="/main/sidebar">
+          <img src="/assets/icon/email.svg" alt="" />
+        </div>
+        <p class="name">Email Id</p>
+      </div>
+      <div class="no d-flex justify-content-between">
+        <a href="mailto:{{contacts?.email1}}"
+          ><p>{{contacts?.email1}}</p></a
+        >
+        <a href="mailto:{{contacts?.email2}}"
+          ><p>{{contacts?.email2}}</p></a
+        >
+      </div>
+    </section>
+  </main>
+</ion-content>

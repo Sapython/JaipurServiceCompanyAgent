@@ -1,0 +1,212 @@
+<app-header [headerName]="headerName"></app-header>
+<ion-content>
+  <ng-container *ngIf="booking$ | async as booking">
+    <!-- active booking -->
+    <main
+      class="view-details-container"
+      *ngIf="inProgressStages.includes(booking.stage)"
+    >
+      <section class="time-id d-flex justify-content-between p-15">
+        <div>
+          <p class="time">{{booking.createdAt.toDate() | date}}</p>
+        </div>
+        <div>
+          <p class="id">Booking ID - #{{booking.id}}</p>
+        </div>
+      </section>
+      <section class="details-inner-container">
+        <section class="status p-15">
+          <div class="d-flex justify-content-between">
+            <p class="head">Job Details</p>
+            <div class="job-status {{booking.stage}}"><p>{{jobsStage[booking.stage]}}</p></div>
+          </div>
+        </section>
+        <section class="job-full-details">
+          <ng-container *ngIf="booking.stage=='discarded'">
+            <app-job-end  [booking]="booking"></app-job-end>
+          </ng-container>
+          <div
+            class="person-details d-flex justify-content-between p-inline-start-15"
+          >
+            <div class="name">
+              <p class="fontandColor">{{booking.currentUser.name}}</p>
+              <div class="d-flex mt-2">
+                <div><img src="/assets/icon/phone.svg" alt="" /></div>
+                <p class="timeandNum">{{booking.currentUser.phoneNumber}}</p>
+              </div>
+            </div>
+            <div class="job-duration">
+              <p class="fontandColor">Job Duration</p>
+              <div class="d-flex mt-2">
+                <div><img src="/assets/icon/clock.svg" alt="" /></div>
+                <p class="timeandNum">{{booking.billing.totalJobTime}} hr</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="person-details service-time d-flex justify-content-between p-inline-start-15"
+          >
+            <div class="service-details">
+              <p class="fontandColor">Service Time</p>
+              <div class="d-flex mt-2">
+                <div><img src="/assets/icon/clock.svg" alt="" /></div>
+                <div style="font-size: 12px; margin: 1px 6px;"> {{ booking.timeSlot?.time?.startTime?.toDate() | date:
+                  "shortTime" }} </div>
+                <!-- {{ booking.timeSlot?.time?.startTime?.toDate() | date:
+                "shortTime" }}-{{ booking.timeSlot?.time?.endTime?.toDate() |
+                date: "shortTime" }} -->
+              </div>
+            </div>
+            <div class="service-dist">
+              <p class="fontandColor">Distance</p>
+              <div class="d-flex mt-2">
+                <div><img src="/assets/icon/Mask group.svg" alt="" /></div>
+                <p class="timeandNum">{{distance | number: '1.0-2'}} km</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="job-completed-add p-15"
+            *ngIf="booking.stage=='completed'"
+          >
+            <div class="address-container">
+              <div>
+                <p class="head">Address</p>
+              </div>
+              <div class="d-flex" [style.margin-top.px]="8">
+                <p><img src="/assets/icon/map.svg" alt="" /></p>
+                <p class="address">
+                  {{booking.address?.addressLine1}},
+                  {{booking.address?.addressLine2}},
+                  {{booking.address?.pincode}}
+                </p>
+              </div>
+            </div>
+            <div class="job-time d-flex justify-content-between">
+              <div>
+                <p class="job">Job Started</p>
+                <div class="d-flex mt-2">
+                  <div><img src="/assets/icon/clock.svg" alt="" /></div>
+                  <p class="timeandNum">
+                    {{booking.progressAt?.toDate() | date:'short'}}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p class="job">Job Ended</p>
+                <div class="d-flex mt-2">
+                  <div><img src="/assets/icon/clock.svg" alt="" /></div>
+                  <p class="timeandNum">
+                    {{booking.completedAt?.toDate() | date:'short'}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="job-details-container d-flex p-inline-start-15">
+            <div class="job-img">
+              <img [src]="booking.mainCategory.icon" alt="" />
+            </div>
+            <div class="job-detail">
+              <p>{{booking.mainCategory.name}}</p>
+              <p class="fee">Job Acceptance Fee</p>
+              <ng-container *ngFor="let service of booking?.services">
+                <p class="job-work" *ngFor="let variant of service?.variants">
+                  {{variant.name}} x {{variant.quantity}}
+                </p>
+              </ng-container>
+              
+            </div>
+            <div class="job-price">
+              <p slot="end" class="total">
+                {{booking.billing.grandTotal | currency:'INR'}}
+              </p>
+              <p slot="end" class="discount">
+                - {{booking.billing.totalJobAcceptanceCharge | currency:'INR'}}
+              </p>
+              <ng-container *ngFor="let service of booking?.services">
+              <div class="ul" *ngFor="let variant of service?.variants">
+                <div class="d-flex justify-content-end">
+                  <p class="dot"></p>
+                  <p class="time">{{variant.jobDuration}} hr</p>
+                </div>
+              </div>
+            </ng-container>
+            </div>
+          </div>
+        </section>
+        <section class="total-price p-inline-start-15">
+          <div class="d-flex justify-content-between mt-2">
+            <p>Total</p>
+            <p>
+              {{(booking.billing.grandTotal
+              -booking.billing.totalJobAcceptanceCharge) | currency:'INR' }}
+            </p>
+          </div>
+        </section>
+      </section>
+      <section class="location" *ngIf="booking.stage=='acceptancePending'">
+        <div class="p-15">
+          <div>
+            <p class="head">Job Location</p>
+          </div>
+          <div class="d-flex" [style.margin-top.px]="8">
+            <p><img src="/assets/icon/map.svg" alt="" /></p>
+            <p class="address">
+              {{booking.address?.addressLine1}}, {{booking.address?.pincode}}
+            </p>
+          </div>
+        </div>
+        <div class="button-container p-15">
+          <ion-buttons class="buttons">
+            <ion-button type="submit" class="cancel save" (click)="acceptJob(booking)">Accept</ion-button>
+            <ion-button class="cancel first-button" id="open-modal5" >Reject</ion-button>
+          </ion-buttons>
+        </div>
+      </section>
+      <app-jobaccepted
+        *ngIf="booking.stage=='jobAccepted'"
+        [booking]="booking"
+      ></app-jobaccepted>
+
+      <app-jobstarted
+        *ngIf="booking.stage=='workStarted' || booking.stage=='inProgress'"
+        [booking]="booking"
+      ></app-jobstarted>
+
+      <app-job-completed [booking]="booking" *ngIf="booking.stage=='completed'"></app-job-completed>
+    </main>
+
+    <!-- invoice page -->
+    <app-invoice
+      *ngIf="completedStages.includes(booking.stage)"
+      [booking]="booking"
+    ></app-invoice>
+
+    <ion-modal #rejectModal1 trigger="open-modal5" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+      <ng-template>
+        <ion-card-title style="
+            font-size: 30px;
+            color: #f75555;
+            text-align: center;
+            margin-top: 20px;
+          ">Reject</ion-card-title>
+        <ion-item-divider></ion-item-divider>
+        <ion-card-subtitle style="
+            text-align: center;
+            margin-top: 10px;
+            color: #181f29;
+            font-weight: 600;
+            font-size: 16px;
+            font-style: normal;
+            margin-bottom: 20px;
+          ">Are you sure you want to Reject?</ion-card-subtitle>
+        <div style="padding-bottom: 20px">
+          <ion-button class="cancel-btn" fill="clear" (click)="rejectModal1.dismiss()">Cancel</ion-button>
+          <ion-button class="logout-btn" (click)="rejectJob(booking.id)" fill="clear">Yes , Reject
+          </ion-button>
+        </div>
+      </ng-template>
+    </ion-modal>
+  </ng-container>
+</ion-content>

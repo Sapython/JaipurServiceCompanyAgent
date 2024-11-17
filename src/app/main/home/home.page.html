@@ -1,0 +1,80 @@
+<app-header></app-header>
+<ion-content>
+  <div class="mainContainer">
+    <div class="wish">
+      <div class="time">
+        <div>
+          <h2>{{salutation}}</h2>
+        </div>
+        <div>{{agentName | async}}</div>
+      </div>
+      <div class="logo">
+        <img src="assets/images/sun.png" alt="" />
+      </div>
+    </div>
+
+    <div class="today" routerLink="../select-working-day">
+      <div>
+        <h6 style="margin: 0">Select Working Day</h6>
+      </div>
+      <div class="day-date">
+        <div class="from">
+          <h5>{{workingSlotsData?.currentDate | date: "EE d MMM"}}</h5>
+          <h6 [ngStyle]="{'color' : workingSlotsData.currentDaySlotText =='Not working' ? 'red': ''}">{{workingSlotsData?.currentDaySlotText ? workingSlotsData?.currentDaySlotText : 'Not Working'}}</h6>
+        </div>
+        <div class="to">
+          <h5>{{workingSlotsData?.nextDate | date: "EE d MMM"}}</h5>
+          <h6 [ngStyle]="{'color' : workingSlotsData.nextDaySlotText == 'Not working' ? 'red': ''}"> {{workingSlotsData?.nextDaySlotText ? workingSlotsData?.nextDaySlotText : 'Not Working'}}</h6>
+        </div>
+        <span><ion-icon name="calendar-outline"></ion-icon></span>
+      </div>
+    </div>
+
+    <div class="today-jobs" routerLink="/main/home">
+      <span>Acceptance Pending Job</span>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </div>
+    <div
+      class="no-pending-jobs"
+      *ngIf="!loadingAcceptedJobs && (acceptancePendingJobs$| async)?.length == 0"
+    >
+      <img src="assets/icon/no-pending-jobs.svg" />
+      <h2>No New Job To Accept</h2>
+    </div>
+    <ng-container *ngIf="loadingAcceptedJobs">
+      <app-pending-job-skeleton
+        *ngFor="let number of [0,1,2]"
+      ></app-pending-job-skeleton>
+    </ng-container>
+    <div class="pending-job" *ngIf="!loadingAcceptedJobs">
+      <app-pending-job
+        [job]="booking"
+        (accept)="accept(booking)"
+        (reject)="reject(booking)"
+        *ngFor="let booking of acceptancePendingJobs$ | async"
+      ></app-pending-job>
+      <!-- <div class="noBookings" *ngIf="(acceptancePendingJobs$ | async)?.length ==0">
+        <img src="assets/images/home/amico.svg">
+      </div> -->
+    </div>
+
+    <div class="new-jobs">
+      <div><h2>Accepted Jobs</h2></div>
+      <div class="see-all" routerLink="../jobs-dashboard"><h6>See All </h6> <ion-icon name="chevron-forward-outline"></ion-icon></div>
+    </div>
+    <div
+      class="no-pending-jobs"
+      *ngIf="!loadingAcceptedJobs && (acceptedJobs$| async)?.length == 0"
+    >
+      <img src="assets/icon/no-pending-jobs.svg" />
+      <h2>No Accepted Jobs</h2>
+    </div>
+    <div class="accepted-job">
+      <app-booking-card
+        [booking]="booking"
+        *ngFor="let booking of acceptedJobs$ | async"
+      ></app-booking-card>
+    </div>
+  </div>
+</ion-content>
+<app-footer></app-footer>

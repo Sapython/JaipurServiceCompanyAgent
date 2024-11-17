@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: lato;
+}
+.slider {
+  position: absolute;
+  width: 100%;
+  bottom: 0%;
+
+  .container {
+    flex-direction: column;
+  }
+
+  .track {
+    width: 100%;
+    background: #181f29;
+    color: white;
+    padding: 4px;
+    border-radius: 12px;
+    height: 56px;
+  }
+
+  .text-slider {
+    width: 82%;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.job-accepted {
+  div {
+    border-radius: 4px;
+    opacity: 0.8;
+    background: #d9f2cf;
+    padding: 10px 5px 10px 6px;
+  }
+  .text {
+    color: #579540;
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 4px;
+    padding-top: 2.5px;
+  }
+  img {
+    color: #579540;
+  }
+}

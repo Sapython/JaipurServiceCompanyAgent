@@ -1,0 +1,251 @@
+* {
+  font-family: "Lato";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+ion-header {
+  box-shadow: none;
+
+  .wallet {
+    display: flex;
+    border: 1px solid rgb(215, 215, 215);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+ion-content {
+  $background: #f7f7f7;
+  $primary: #181f29;
+  $btn-primary: #ffffff;
+  $btn-secondary: #444444;
+  $border: #e9e9e9;
+
+  .container {
+    background-color: $background;
+    height: 100%;
+
+    // button on and off property
+
+    .off {
+      background: #e8e9ea;
+      color: $btn-secondary;
+    }
+
+    .on {
+      background: $primary;
+      color: $btn-primary;
+    }
+    // ends here
+
+    h1 {
+      color: $primary;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .date {
+      padding: 16px 16px 40px 16px;
+
+      h2 {
+        color: $primary;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .btn {
+        display: flex;
+        // justify-content: space-between;
+        gap: 12px;
+        font-size: 12px;
+        font-weight: 500;
+
+        button {
+          margin-top: 12px;
+          width: 45px;
+          line-height: inherit;
+          padding: 8px;
+          border-radius: 6px;
+        }
+
+        // button:hover {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+        // button:focus {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+        // button:active {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+      }
+    }
+
+    .working {
+      padding: 16px;
+
+      border: 1px solid $border;
+      background: $btn-primary;
+
+      .row-1 {
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          gap: 12px;
+        }
+
+        // .right{
+        //     height: 24px;
+        //     width: 24px;
+        //     border: 1px solid $border;
+        // }
+      }
+
+      .row-2 {
+        display: flex;
+        // justify-content: space-between;
+        gap: 12px;
+        font-size: 12px;
+        font-weight: 500;
+
+        button {
+          margin-top: 24px;
+          // width: 45px;
+          line-height: inherit;
+          padding: 8px 16px;
+          border-radius: 6px;
+          // background: #E8E9EA;
+          // color: $btn-secondary;
+        }
+
+        // button:hover {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+        // button:visited {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+      }
+    }
+
+    .job {
+      padding: 16px;
+      margin-top: 4px;
+      border: 1px solid $border;
+      background: $btn-primary;
+
+      .row-1 {
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          gap: 12px;
+        }
+
+        // .right{
+        //     height: 24px;
+        //     width: 24px;
+        //     border: 1px solid $border;
+        // }
+      }
+
+      .row-2 {
+        display: flex;
+        // justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 500;
+
+        button {
+          margin-top: 24px;
+          padding: 8px 16px;
+          border-radius: 6px;
+          // background: #E8E9EA;
+          // color: $btn-secondary;
+        }
+
+        // button:hover {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+        // button:visited {
+        //     background: $primary;
+        //     color: $btn-primary;
+        // }
+      }
+    }
+
+    .workingHours {
+      padding: 16px;
+      margin-top: 4px;
+      border: 1px solid $border;
+      background: $btn-primary;
+
+      .row-1 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .left {
+          display: flex;
+          gap: 12px;
+        }
+
+        // .right{
+        //     height: 24px;
+        //     width: 24px;
+        //     border: 1px solid $border;
+        // }
+      }
+
+      .rows {
+        padding: 16px 0px;
+        border-bottom: 1px solid $border;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+
+  div {
+    p {
+      color: var(--primary, #181f29);
+      font-size: 12px;
+      font-family: Lato;
+      font-weight: 500;
+      margin: 0px;
+    }
+  }
+}
+
+ion-modal {
+  --ion-padding: 0px;
+}
+ion-button.bottom {
+  padding-top: 30px;
+  margin-inline: 15px;
+}

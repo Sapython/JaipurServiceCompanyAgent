@@ -1,0 +1,162 @@
+* {
+  font-family: Lato;
+  padding: 0;
+  margin: 0;
+}
+.pending-job {
+  padding: 15px;
+  .job-details {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 10px;
+
+    .details-img {
+      padding-right: 15px;
+    }
+
+    .details-text {
+      padding-top: 5px;
+      padding-left: 10px;
+      width: 69%;
+
+      .lines {
+        width: 62%;
+      }
+
+      .name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1a1d1f;
+        margin-bottom: 5px;
+      }
+
+      .id {
+        color: (#6f767e);
+      }
+    }
+
+    .details-price {
+      width: 16%;
+      padding-top: 5px;
+      font-weight: 700;
+
+      .total {
+        margin-bottom: 5px;
+        width: 100%;
+      }
+
+      .discount {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.job-time {
+  border-bottom: none !important;
+  .calender {
+    padding-right: 0px !important;
+    margin-top: 10px;
+  }
+
+  .details-time {
+    padding-top: 12px !important;
+    padding-left: 15px;
+    width: 58% !important;
+
+    .time {
+      margin-bottom: 5px;
+    }
+
+    .date {
+    }
+  }
+
+  .map-details {
+    margin-top: 10px;
+    width: 30%;
+
+    .metadata-end-wrapper {
+      width: 57%;
+      margin-left: 5px;
+    }
+
+    .distance-img {
+      width: 40px;
+      height: 40px;
+    }
+    .distance {
+      padding-top: 5px;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    .km {
+      padding-top: 3px;
+      padding-left: 10px;
+      width: 100%;
+    }
+  }
+}
+
+.job-address {
+  border-bottom: none !important;
+
+  .person-details {
+    padding-left: 10px;
+    width: 64%;
+    margin-top: 5px;
+  }
+
+  .person-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1d1f;
+    width: 70%;
+    margin-bottom: 5px;
+  }
+
+  .add-name {
+    p {
+      font-size: 12px;
+      font-weight: 400;
+      padding-left: 5px;
+      color: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  .view-details {
+    align-items: center;
+    padding-top: 20px;
+    width: 21%;
+
+    p {
+      width: 100%;
+    }
+  }
+}
+
+.calender {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding-top: 8px;
+}
+
+ion-card {
+  box-shadow: none;
+}
+
+.buttons {
+  .cancel {
+    width: 48%;
+    height: 25px;
+  }
+}
+
+.shimmer-effect {
+  border-bottom: none;
+  background: white;
+  margin-top: 5px;
+}

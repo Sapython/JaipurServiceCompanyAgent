@@ -1,0 +1,123 @@
+<app-header headerName="Invoice"></app-header>
+<ion-content>
+  <ng-container *ngIf="booking$ | async as booking">
+  <main>
+    <section *ngIf="booking?.stage=='paymentCompleted'">
+      <div class="payment-detail-container p-15">
+        <div class="head">
+          <p>{{booking.currentUser.name}}</p>
+        </div>
+        <div class="add">
+          <p>{{booking.address?.addressLine1}},
+            {{booking.address?.addressLine2}},
+            {{booking.address?.pincode}}</p>
+        </div>
+        <div class="d-flex justify-content-between amount">
+          <p>Amount to collect:</p>
+          <p>{{booking.billing.grandTotal | currency:'INR'}}</p>
+        </div>
+      </div>
+    </section>
+    <section class="p-15 job-summary-container">
+      <div class="head"><p>Job Summary</p></div>
+      <div class="job-details-container d-flex">
+        <div class="job-img">
+          <img [src]="booking.mainCategory.icon" alt="" />
+        </div>
+        <div class="job-detail">
+          <p>{{booking.mainCategory.name}}</p>
+          <p class="fee">Job Acceptance Fee</p>
+          <!-- <p class="job-work">1 Ton - Install x 2</p> -->
+          <ng-container *ngFor="let service of booking?.services">
+            <p class="job-work" *ngFor="let variant of service?.variants">
+              {{variant.name}} x {{variant.quantity}}
+            </p>
+          </ng-container>
+        </div>
+        <div class="job-price">
+          <p slot="end" class="total">{{booking.billing.grandTotal | currency:'INR'}}</p>
+          <p slot="end" class="discount">- {{booking.billing.totalJobAcceptanceCharge | currency:'INR'}}</p>
+          <ng-container *ngFor="let service of booking?.services">
+            <div class="ul" *ngFor="let variant of service?.variants">
+              <div class="d-flex justify-content-end">
+                <p class="dot"></p>
+                <p class="time">{{variant.jobDuration}} hr</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+    <section class="p-15 invoice-container">
+      <div class="inner-container">
+        <div
+          class="d-flex margin-top-bottom justify-content-between"
+          [style.margin-top.px]="0"
+        >
+          <p class="invoice">Invoice</p>
+          <p class="bookingId">Booking ID - #{{booking.id}}</p>
+        </div>
+        <div class="d-flex margin-top-bottom justify-content-between">
+          <p class="light-color">Total Duration</p>
+          <p class="light-color dark-color">{{booking.billing.totalJobTime}} hr</p>
+        </div>
+        <ng-container *ngFor="let service of booking?.services">
+        <div class="d-flex margin-top-bottom justify-content-between" *ngFor="let variant of service?.variants">
+          <p class="light-color">{{variant.name}} x {{variant.quantity}}</p>
+          <p class="light-color dark-color">{{variant.billing.totalPrice| currency:'INR'}}</p>
+        </div>
+        </ng-container>
+
+        <div class="d-flex margin-top-bottom justify-content-between">
+          <p class="light-color">Discount</p>
+          <p class="light-color dark-color red-color">-{{booking.billing.discount| currency:'INR'}}</p>
+        </div>
+        <div class="d-flex margin-top-bottom justify-content-between">
+          <p class="light-color">Sub Total</p>
+          <p class="light-color dark-color">{{booking.billing.subTotal| currency:'INR'}}</p>
+        </div>
+        <div class="d-flex margin-top-bottom justify-content-between">
+          <p class="light-color">Tax GST 18%</p>
+          <p class="light-color dark-color">{{booking.billing.tax| currency:'INR'}}</p>
+        </div>
+      </div>
+      <div class="total-price">
+        <div class="d-flex justify-content-between mt-2">
+          <p>Total</p>
+          <p>{{booking.billing.grandTotal| currency:'INR'}}</p>
+        </div>
+      </div>
+    </section>
+    <section >
+      <div class="payment-detail p-15">
+        <div class="d-flex margin-top-bottom justify-content-between">
+          <p class="details">Payment Details</p>
+          <p class="status">Pending</p>
+        </div>
+        <div class="d-flex margin-top-bottom justify-content-between" style="margin: 8px 0 14px 0">
+          <p class="mode">Payment Mode</p>
+          <p class="paytype">Pay After Job</p>
+        </div>
+        <div class="head">
+              <ion-checkbox [checked]="paymentFlg" (ionChange)="paymentDone($event)" color="dark"></ion-checkbox>
+              <ion-label class="label">I Have Received Payment After Job
+              </ion-label>
+         </div>
+      </div>
+    </section>
+    <section class="slider" *ngIf="booking.stage == 'paymentPending'">
+      <div class="button-container p-15">
+        <ion-buttons class="buttons">
+          <ion-button type="submit" class="cancel save" (click)="completeJob()" [disabled]="!paymentFlg"
+            >Mark As Complete</ion-button
+          >
+        </ion-buttons>
+      </div>
+    </section>
+
+    <app-end-job-slider
+      *ngIf="booking?.stage=='paymentCompleted'"
+    ></app-end-job-slider>
+  </main>
+  </ng-container>
+</ion-content>

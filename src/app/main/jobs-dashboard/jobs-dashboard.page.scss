@@ -1,0 +1,187 @@
+* {
+  font-family: "Lato";
+}
+
+.mainContainer {
+  background-color: #f7f7f7;
+  height: 100%;
+  overflow-y: scroll;
+
+  .header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 60px;
+
+    .icon {
+      display: flex;
+
+      span {
+        margin-top: 5px;
+        margin-left: 4px;
+      }
+    }
+
+    .notification {
+      display: flex;
+
+      .wallet {
+        display: flex;
+        border: 1px solid rgb(215, 215, 215);
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 30px;
+      }
+
+      #notify {
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.selector {
+  color: #888;
+  font-size: 14px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: 0;
+  border-radius: 0;
+  // &::-webkit-scrollbar {
+  //     width: 0px !important;
+  //  }
+  // &::-webkit-scrollbar-track {
+  //    background: #23232e;
+  //  }
+  //  &::-webkit-scrollbar-thumb {
+  //     background: #df49a6;
+  //  }
+  //  &::-webkit-scrollbar-thumb:hover {
+  //    background: #ff7eef;
+  //  }
+}
+.segment-button-checked {
+  --indicator-color: transparent !important;
+  --indicator-color-checked: transparent !important;
+}
+
+.datePos {
+  background-color: #f7f7f7;
+  min-height: 80px;
+  max-height: fit-content;
+  width: 360px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.card {
+  width: 100%;
+  height: 50%;
+  padding: 5%;
+  background-color: white;
+  margin-top: 2%;
+}
+
+.diplayCardText {
+  display: flex;
+}
+
+.price1 {
+  margin-left: auto;
+  color: green;
+  font-size: large;
+  font-weight: bold;
+  margin: top -0.8em;
+}
+
+.cName {
+  color: black;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.address {
+  // font-size:medium;
+  // color: #222222a6;
+  margin-top: -5%;
+  color: #737373;
+  font-size: 12px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.column {
+  flex-basis: 50%;
+  margin-top: -5%;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+
+  div {
+    p {
+      color: var(--primary, #444);
+      font-size: 12px;
+      font-family: Lato;
+      font-weight: 500;
+      margin: 0px;
+    }
+  }
+}
+.date {
+  background-color: #f7f7f7;
+  padding: 10px 12px !important;
+  height: 40px;
+}
+.content {
+  height: 80vh;
+}
+
+.datepicker {
+  display: flex;
+  justify-content: end;
+  margin: 10px 10px -10px 0px;
+}
+.mat-form-field-type-mat-date-range-input .mat-hint {
+  color: white !important;
+}
+
+.mat-form-field-flex {
+  background-color: white !important;
+}
+
+.mat-date-range-input-inner {
+  color: black !important;
+}
+
+.bookings-card {
+  background-color: #f7f7f7 !important;
+}
+.bookings-shimmer {
+  background-color: #fff !important;
+  margin-bottom: 15px;
+}
+// ::ng-deep .buttons {
+//   display: none;
+// }

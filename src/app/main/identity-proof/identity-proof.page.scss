@@ -1,0 +1,72 @@
+ion-content {
+  h1 {
+    color: #181f29;
+    text-align: center;
+    font-family: Lato;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  p {
+    color: #666;
+    text-align: center;
+    font-family: Lato;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    height: 100%;
+    .input {
+      display: flex;
+      padding-inline-start: 15px;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid #bebebe;
+      background: #fff;
+      ion-icon {
+        color: #001e42;
+        font-size: 20px;
+      }
+      input {
+        padding: 10px 15px;
+        height: 40px;
+        width: 100%;
+        border-radius: 8px;
+        border: none;
+        &:focus,
+        &:active {
+          outline: none;
+        }
+      }
+    }
+    .buttons {
+      align-items: center;
+      justify-content: space-between;
+      margin: 30px 0px;
+      display: flex;
+      ion-button {
+        font-size: 20px;
+        width: 47% !important;
+      }
+      ion-button[fill="outline"] {
+        --padding-top: 13px;
+        --padding-bottom: 13px;
+      }
+      ion-button[fill="solid"] {
+        --padding-top: 14px;
+        --padding-bottom: 14px;
+      }
+    }
+    .validation-errors {
+      font-size: small;
+      color: var(--ion-color-danger, #f1453d);
+  }
+  }
+}

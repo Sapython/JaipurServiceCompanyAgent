@@ -1,0 +1,237 @@
+* {
+  font-family: Lato;
+  padding: 0;
+  margin: 0;
+}
+.pending-job {
+  padding: 15px;
+  background-color: white;
+  margin-top: 5px;
+  .job-details {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    .details-img {
+      padding-right: 15px;
+    }
+
+    .details-text {
+      padding-top: 5px;
+      width: 65%;
+
+      .name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1a1d1f;
+      }
+
+      .id {
+        color: (#6f767e);
+      }
+    }
+
+    .details-price {
+      width: 18%;
+      text-align: end;
+      .price {
+        float: right;
+        padding-top: 5px;
+        font-weight: 700;
+
+        .total {
+          color: #579540;
+          float: right;
+        }
+
+        .discount {
+          color: #c16256;
+          //float: right;
+        }
+      }
+    }
+  }
+}
+
+.job-time {
+  border-bottom: none !important;
+  .calender {
+    padding-right: 0px !important;
+    margin-top: 10px;
+  }
+
+  .details-time {
+    padding-top: 14px !important;
+    padding-left: 15px;
+    width: 68% !important;
+
+    .time {
+      font-size: 12px;
+      font-weight: 500;
+      color: #1a1d1f;
+      margin: 0;
+    }
+
+    .date {
+      color: #737373;
+    }
+  }
+
+  .map-details {
+    margin-top: 10px;
+
+    .distance-img {
+      margin-top: 7px;
+    }
+    .distance {
+      font-size: 12px;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+
+    .km {
+      color: #737373;
+      font-weight: 400;
+      padding-top: 3px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.job-address {
+  border-bottom: none !important;
+
+  .person-details {
+    padding-left: 15px;
+    width: 64%;
+  }
+
+  .person-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1d1f;
+  }
+
+  .add-name {
+    p {
+      font-size: 12px;
+      font-weight: 400;
+      padding-left: 5px;
+      color: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  .view-details {
+    align-items: center;
+    padding-top: 10px;
+
+    p {
+      color: #1a1d1f;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+
+.calender {
+  border-radius: 47.291px;
+  width: 40px;
+  height: 40px;
+  border: 0.732px solid rgba(196, 196, 196, 0.3);
+  text-align: center;
+  padding-top: 8px;
+}
+
+ion-card {
+  box-shadow: none;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  button {
+    padding: 12px 10px;
+  }
+  .cancel {
+    width: 48%;
+    font-family: lato;
+    text-transform: none;
+    color: #181f29;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: 2px solid var(--primary, #181f29);
+    background: var(--SECONDARY, #fff);
+    box-shadow: 0px 2px 6px 1px rgba(22, 22, 22, 0.1);
+    margin-right: 0px;
+  }
+
+  .save {
+    background: var(--primary, #181f29);
+    color: white;
+    margin-left: 0px;
+  }
+}
+
+ion-modal {
+  --border-radius: 20px 20px 20px 20px;
+}
+#open-modal {
+  width: 150px;
+  height: 40px;
+  border-radius: 30px;
+  padding-bottom: 2px;
+  line-height: normal;
+  text-transform: none;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  margin-top: 10px;
+  margin-left: -15px;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+ion-modal {
+  --height: auto;
+}
+.cancel-btn {
+  border: 1px solid var(--primary, #181f29);
+
+  color: #181f29;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 5px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 45px;
+  width: 135px;
+  text-transform: none;
+  display: inline-block;
+}
+.logout-btn {
+  border: 1px solid var(--primary, #181f29);
+  font-style: normal;
+  background: #181f29;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 5px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 45px;
+  width: 135px;
+  text-transform: none;
+  display: inline-block;
+}
+
+ion-modal {
+  --border-radius: 20px 20px 0px 0px !important;
+}

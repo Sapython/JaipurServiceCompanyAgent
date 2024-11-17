@@ -1,0 +1,98 @@
+<app-header></app-header>
+<div class="container">
+  <div class="main">
+    <div class="heading">
+      <div>{{month$ |async | date:'MMM y'}}</div>
+    </div>
+    <div>
+      <app-bar-chart-make [months]="months"></app-bar-chart-make>
+    </div>
+  </div>
+  <div class="earning-main">
+    <div class="earning-amount">
+      <span><img src="assets/icon/money-colored.svg" /></span>
+      <div class="amount shimmer-effect">
+        <p *ngIf="isLoading$ | async" class="lines shine"></p>
+        <h4 *ngIf="!(isLoading$ | async)">
+          {{totalEarning$ | async | currency:'INR':'symbol' : '1.0-0'}}
+        </h4>
+        <h6>Total Earning</h6>
+      </div>
+    </div>
+    <div class="text-div">
+      <span>The amount that customer pays including taxes.</span>
+    </div>
+  </div>
+  <div class="earning-main">
+    <div class="earning-amount">
+      <span><img src="assets/icon/money-bag.svg" /></span>
+      <div class="amount shimmer-effect">
+        <p *ngIf="isLoading$ | async" class="lines shine"></p>
+        <h4 *ngIf="!(isLoading$ | async)">
+          -{{totalDeduction$ | async | currency:'INR':'symbol' : '1.0-0'}}
+        </h4>
+        <h6>Total Deductions</h6>
+      </div>
+    </div>
+    <div class="text-div">
+      <span>Job acceptance fee and any other penalty or charges.</span>
+    </div>
+  </div>
+
+  <div class="earning-main">
+    <div class="earning-amount">
+      <span><img src="assets/icon/salary.svg" /></span>
+      <div class="amount shimmer-effect">
+        <p *ngIf="isLoading$ | async" class="lines shine"></p>
+        <h4 *ngIf="!(isLoading$ | async)" style="color: #579540">
+          {{netEarning$ | async | currency:'INR':'symbol' : '1.0-0'}}
+        </h4>
+        <h6>Net Earnings</h6>
+      </div>
+    </div>
+  </div>
+  <div class="heading">
+    <div class="left">History</div>
+  </div>
+  <ng-container *ngIf="isLoading$ | async">
+    <section class="card shimmer-effect">
+      <div class="icon box shine"></div>
+      <div class="card-details">
+        <div class="row-1 shimmer-row">
+          <p id="title" class="lines shine"></p>
+          <p id="amount" class="id lines shine"></p>
+        </div>
+        <div class="row-2">
+          <p id="date" class="lines shine"></p>
+          <p id="date" class="lines shine"></p>
+          <p id="deduction" class="lines shine"></p>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+  <ng-container *ngFor="let booking of history$ | async">
+    <div class="card" routerLink="/main/view-details/{{ booking?.currentUser?.userId }}/{{booking?.id}}/{{booking.stage}}">
+      <span class="icon"><img src="assets/icon/tick-circle.svg" /></span>
+      <div class="card-details">
+        <div class="row-1">
+          <span id="title">{{booking.subCategory.name}}</span>
+          <span id="amount"
+            >{{booking.billing.grandTotal | currency:'INR':'symbol' :
+            '1.0-0'}}</span
+          >
+        </div>
+        <div class="row-2">
+          <span id="date">{{booking.id | slice:0:6}}</span>
+          <span id="date"
+            >{{booking.createdAt.toDate() | date:'dd MMM yyyy'}}</span
+          >
+          <span id="deduction"
+            >{{booking.billing.totalJobAcceptanceCharge |
+            currency:'INR':'symbol' : '1.0-0'}}</span
+          >
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<app-footer></app-footer>

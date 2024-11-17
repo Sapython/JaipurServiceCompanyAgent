@@ -1,0 +1,16 @@
+<app-header headerName="Job Start"></app-header>
+<ion-content>
+  <h1>Enter Job Code</h1>
+  <p>Code is visible in Customer App</p>
+  <div class="otp-inputs" [ngStyle]="{'pointer-events': dateValidate ? 'none' : '' }">
+    <ng-otp-input
+      #ngOtpInput
+      (onInputChange)="onOtpChange($event)"
+      [config]="config"
+    ></ng-otp-input>
+  </div>
+  <div class="validation-errors" *ngIf="dateValidate">
+    <p >You can't enter otp before the booking date</p>
+  </div>
+  <ion-button class="signup" color="dark" (click)="login()">Verify OTP</ion-button>
+</ion-content>

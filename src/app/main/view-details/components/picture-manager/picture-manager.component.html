@@ -1,0 +1,64 @@
+<!-- <app-header [headerName]=""></app-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{
+      booking.stage === "inProgress"
+        ? "After Work Images"
+        : "Before Work Pictures"
+    }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="booking.stage === 'workStarted'">
+    <p>Picture Before Work</p>
+    <section class="images">
+      <div
+        class="image"
+        *ngFor="let image of beforeImages | async; let i = index"
+      >
+        <button (click)="remove(i, 'before')">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <img [src]="image" />
+      </div>
+      <button
+        (click)="capture('before')"
+        class="ion-activatable"
+        [disabled]="takingPicture | async"
+      >
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-icon name="camera"></ion-icon>
+        <span>Click Photo</span>
+      </button>
+    </section>
+  </ng-container>
+
+  <ng-container *ngIf="booking.stage === 'inProgress'">
+    <br />
+    <p>Picture After Work</p>
+    <section class="images">
+      <div
+        class="image"
+        *ngFor="let image of afterImages | async; let i = index"
+      >
+        <button (click)="remove(i, 'after')">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <img [src]="image" />
+      </div>
+      <button
+        (click)="capture('after')"
+        class="ion-activatable"
+        [disabled]="takingPicture | async"
+      >
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-icon name="camera"></ion-icon>
+        <span>Click Photo</span>
+      </button>
+    </section>
+  </ng-container>
+
+  <ion-button (click)="saveProof()" expand="block" fill="solid" color="dark">
+    Save Proof
+  </ion-button>
+</ion-content>

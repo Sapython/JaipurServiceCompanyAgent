@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: lato;
+}
+
+.job-accepted-container {
+  .job-accepted {
+    div {
+      border-radius: 4px;
+      opacity: 0.8;
+      background: #d9f2cf;
+      padding: 10px 10px 6px 30px;
+      justify-content: center;
+    }
+    .text {
+      color: #579540;
+      font-size: 12px;
+      font-weight: 400;
+      padding-top: 2.5px;
+      padding-left: 5px;
+    }
+    img {
+      color: #579540;
+    }
+  }
+
+  .location {
+    background-color: white;
+    margin-top: 5px;
+    .head {
+      color: #444;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .address {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 12px;
+      font-weight: 400;
+      margin: 2px 0px 0px 5px;
+      width: 70%;
+    }
+  }
+
+  .slider {
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+}

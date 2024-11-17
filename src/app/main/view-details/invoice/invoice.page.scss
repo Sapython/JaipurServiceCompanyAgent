@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: lato;
+}
+
+ion-content {
+  --background: #f7f7f7;
+  --position: relative;
+}
+
+.job-summary-container {
+  background: white;
+  margin-top: 5px !important;
+
+  .head {
+    color: #181f29;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .job-details-container {
+    margin-top: 15px;
+
+    .job-detail {
+      margin-left: 15px;
+      width: 60%;
+
+      .fee {
+        color: #444;
+        font-size: 14px;
+        font-weight: 500;
+        padding-top: 5px;
+      }
+
+      .job-work {
+        color: #6f767e;
+        font-size: 12px;
+        font-weight: 500;
+        padding-top: 5px;
+      }
+    }
+  }
+
+  .job-price {
+    text-align: right;
+    padding-top: 5px;
+    font-weight: 700;
+    width: 22%;
+
+    .total {
+      color: #579540;
+    }
+
+    .discount {
+      color: #c16256;
+    }
+
+    .ul {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 12px;
+      font-weight: 500;
+
+      .time {
+        padding-left: 5px;
+      }
+    }
+
+    .dot {
+      border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(0, 0, 0, 0.55);
+      margin-top: 6px;
+    }
+  }
+}
+
+.invoice-container {
+  background: white;
+  margin-top: 5px !important;
+
+  .margin-top-bottom {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .light-color {
+    color: #7e8083;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .bookingId{
+    font-size: 12px;
+    color: #444;
+  }
+  .invoice{
+    font-size: 14px;
+    color: #181F29;
+  }
+
+  .dark-color {
+    color: #252525 !important;
+  }
+
+  .red-color {
+    color: #c16256 !important;
+  }
+}
+
+.inner-container {
+  border-bottom: 1px solid #d7d7d7;
+  border-bottom-style: dashed;
+}
+
+.total-price {
+  font-weight: 600;
+  color: #181f29;
+  margin-top: 0.5rem;
+}
+
+.button-container {
+  position: absolute;
+  width: 100%;
+  bottom: 0%;
+
+  .buttons {
+    margin-left: 0px;
+    margin-right: 0px;
+    display: block;
+
+    .cancel {
+      width: 100%;
+      font-family: lato;
+      text-transform: none;
+      color: #181f29;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid var(--primary, #181f29);
+      background: var(--SECONDARY, #fff);
+      box-shadow: 0px 2px 6px 1px rgba(22, 22, 22, 0.18);
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-top: 10px;
+      padding: 6px;
+    }
+
+    .save {
+      background: var(--primary, #181f29);
+      color: white;
+    }
+  }
+}
+
+.payment-detail-container {
+  background-color: white;
+  margin-top: 6px;
+
+  .head {
+    color: #444;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .add {
+    color: var(--secondry-text-color, rgba(0, 0, 0, 0.55));
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .amount {
+    color: #444;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.payment-detail{
+  background-color: white;
+  margin-top: 6px;
+  .details{
+    font-size: 14px;
+  }
+  .status{
+    border-radius: 5px;
+    background: #FFDFD2;
+    height: 22.846px;
+    padding: 5px 15px;
+    color: #FF820F;
+    text-align: right;
+    font-size: 10px;
+  }
+  .mode{
+     color: #7E8083;
+     font-size: 12px;
+  }
+  .paytype{
+    font-size: 12px;
+    color: #252525;
+  }
+  .head{
+    display: flex;
+    align-items: center;
+    .label{
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0px 0px 2px 10px;
+    }
+  }
+}
